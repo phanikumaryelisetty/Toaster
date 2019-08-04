@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'toasterlibrary'   // Has to be same as your library module name
+
+    publishedGroupId = 'com.freestar.org.prebid'
+    libraryName = 'toasterlibrary'
+    artifact = 'toasterlibrary'     // Has to be same as your library module name
+
+    libraryDescription = 'Android Library to make any text into Toast with Awesome prepended to the text'
+
+    // Your github repo link
+    siteUrl = 'https://github.com/phanikumaryelisetty/Toaster'
+    gitUrl = 'https://github.com/phanikumaryelisetty/Toaster.git'
+    githubRepository= 'phanikumaryelisetty/Toaster'
+
+    libraryVersion = '1.0'
+
+    developerId = 'phanifreestar'
+    developerName = 'Phani Yelisetty'
+    developerEmail = 'phani.yelisetty@freestar.io'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+// Place it at the end of the file
+apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nisrulz/JCenter/master/bintrayv1.gradle'
